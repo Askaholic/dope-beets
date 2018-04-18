@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 /* Module Dependencies */
-var app = require('../app');
+var app = require('../src-server/app');
 var debug = require('debug')('dope-beets:server');
 var http = require('http');
 
@@ -16,7 +16,7 @@ server.on('listening', onListening);
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
-  
+
   if (isNaN(port)) {
     return val;
   }
