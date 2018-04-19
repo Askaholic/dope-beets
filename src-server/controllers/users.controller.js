@@ -26,7 +26,7 @@ exports.getUser = async function(req, res, next) {
 
     var user;
     try {
-        user = await userService.getUser(id)
+        user = await userService.getUser(id);
     } catch (e) {
         try {
             var newUser = { ...emptyUser };
