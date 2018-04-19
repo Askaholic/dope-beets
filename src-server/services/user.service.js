@@ -1,16 +1,11 @@
 var User = require('../models/user.model');
 
 exports.getUser = async function(id) {
-    try {
-        var user = await User.findOne({iz: id});
-        if (!user) {
-            throw Exception('Could not find user: ' + id);
-        }
-        return user;
+    var user = await User.findOne({iz: id});
+    if (!user) {
+        throw Exception('Could not find user: ' + id);
     }
-    catch (e) {
-        throw e;
-    }
+    return user;
 };
 
 exports.createUser = async function(user) {
@@ -18,11 +13,19 @@ exports.createUser = async function(user) {
         ...user
     });
 
-    try {
-        var savedUser = await newUser.save();
-        return savedUser;
-    } catch (e) {
-        console.log(e);
-        throw Error('Error creating user!');
-    }
+    var savedUser = await newUser.save();
+    return savedUser;
 };
+
+exports.updateUser = async function(user) {
+    var id = user.iz;
+
+    var olduser = await User.findOne({iz: id});
+    if (!olduser) {
+        throw Exception('Could not find user: ' + id);
+    }
+    Object.assign(olduser, user);
+
+    var savedUser = await newUser.save();
+    return savedUser;
+}
