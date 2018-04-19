@@ -11,7 +11,7 @@ exports.getVegetables = async function(req, res, next) {
     try {
         var vegetables = await veggieService.getVegetables();
     } catch (e) {
-
+        return error(res, e.message);
     }
     return res.status(200).json({
         status: 'success',
