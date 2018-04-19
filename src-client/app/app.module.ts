@@ -1,16 +1,30 @@
+import { NgModule } from '@angular/core';
+import { environment } from '../environments/environment';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ApiService } from './services/api.service';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
-
-import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
+
+
+
+const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: ':id',   component: LoginComponent },
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+];
 
 @NgModule({
   declarations: [
@@ -18,6 +32,10 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+    //   { enableTracing: !environment.production } // <-- debugging purposes only
+    ),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -26,7 +44,9 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [
+      ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
