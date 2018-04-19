@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroupDirective, NgForm, Validators, ValidatorFn } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-import { ApiService } from '../../services/api.service';
-import { User } from '../../models/user.model';
+import { Router } from '@angular/router';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,7 +26,7 @@ export function izValidator(): ValidatorFn {
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private api: ApiService) { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
     }
@@ -43,11 +43,6 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.api.getUser(iz).subscribe((user: User) => {
-            console.log(user);
-        },
-        (error) => {
-            console.log('an error occurred: ', error);
-        });
+        this.router.navigate(['', iz])
     }
 }

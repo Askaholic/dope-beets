@@ -14,12 +14,13 @@ import { ApiService } from './services/api.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { BiddingComponent } from './components/bidding/bidding.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: ':id',   component: LoginComponent },
+  { path: ':iz',   component: BiddingComponent },
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    BiddingComponent
   ],
   imports: [
     RouterModule.forRoot(
