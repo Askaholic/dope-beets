@@ -95,8 +95,8 @@ exports.makeBid = async function(req, res, next) {
             return error(res, 'Vegetable not found');
         }
 
-        user.bids.append({
-            item: veg,
+        user.bids.push({
+            item: veg.name,
             amount: amt
         });
         user.izhk -= amt;

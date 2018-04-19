@@ -26,6 +26,6 @@ exports.updateUser = async function(user) {
     }
     Object.assign(olduser, user);
 
-    var savedUser = await newUser.save();
+    var savedUser = await olduser.save();
     return savedUser;
 }
