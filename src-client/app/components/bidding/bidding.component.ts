@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
 import { ApiService } from '../../services/api.service';
-import { User } from '../../models/user.model';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/switchMap';
@@ -15,18 +17,31 @@ import 'rxjs/add/operator/switchMap';
 })
 export class BiddingComponent implements OnInit {
 
-    user$: Observable<User>;
+    userData$: Observable<any>;
 
     constructor(
         private api: ApiService,
         private router: Router,
-        private route: ActivatedRoute
-    ) { }
+        private route: ActivatedRoute,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer
+    ) {
 
-  ngOnInit() {
-      this.user$ = this.route.paramMap.switchMap((params: ParamMap) => {
+    iconRegistry.addSvgIcon(
+        'thumbs-up',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
+    }
+
+    ngOnInit() {
+        this.userData$ = this.route.paramMap.switchMap((params: ParamMap) => {
           return this.api.getUser(params.get('iz'));
-      })
-  }
+        })
 
+        this.userData$.subscribe((data)=> {
+          console.log(data);
+        },
+        (error) => {
+            console.log('Error: ', error);
+        });
+    }
 }
