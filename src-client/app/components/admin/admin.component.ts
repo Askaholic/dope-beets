@@ -88,8 +88,7 @@ export class AdminComponent implements OnInit {
                 let newVeg = this.api.makeVegetable(this.password, data.name);
                 newVeg.subscribe(
                     (data) => {
-                        console.log(data);
-                        this.vegData$ = Observable.combineLatest(this.vegData$, Observable.of(data));
+                        this.vegData$ = this.api.getVegetables();
                     },
                     (error) => {
                         console.log(error);

@@ -18,6 +18,8 @@
 
 .password-wrap {
     display: block;
+    position: absolute;
+    top: 20vh;
     width: 30rem;
 }
 
