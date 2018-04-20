@@ -1,5 +1,8 @@
-<mat-toolbar color="primary">
-    <span>{{ (userData$ | async)?.user.iz }}</span>
-    <span class="fill-remaining-space"></span>
-    <span><mat-icon svgIcon="build"></mat-icon>Izhk: {{ (userData$ | async)?.user.izhk }}</span>
-</mat-toolbar>
+<div class="wrap">
+    <mat-toolbar color="primary">
+        <mat-icon svgIcon="account"></mat-icon>
+        <span>: {{ (userData$ | async)?.user.iz }}</span>
+        <span class="fill-remaining-space"></span>
+        <span>Izhk: {{ (userData$ | async)?.user.izhk }}</span>
+    </mat-toolbar>
+</div>

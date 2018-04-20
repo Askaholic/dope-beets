@@ -28,8 +28,8 @@ export class BiddingComponent implements OnInit {
     ) {
 
     iconRegistry.addSvgIcon(
-        'thumbs-up',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
+        'account',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/img/account.svg'));
     }
 
     ngOnInit() {

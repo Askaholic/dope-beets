@@ -1,18 +1,23 @@
-<mat-card class="fl-center-contents">
-    <mat-card-title><h1>Login</h1></mat-card-title>
-    <mat-card-content>
-        <form class="login-form"
-            (ngSubmit)="login(input.value)">
-            <mat-form-field class="login-field">
-                <input matInput #input [formControl]="izFormControl"
-                    [errorStateMatcher]="matcher"
-                    maxlength="6">
-                <mat-hint>Enter your 6 digit code</mat-hint>
-                <mat-hint align="end">{{input.value?.length || 0}}/6</mat-hint>
-                <mat-error *ngIf="izFormControl.hasError('badIZ') && !izFormControl.hasError('required')">
-                  Please enter a valid IZ number
-                </mat-error>
-            </mat-form-field>
-        </form>
-    </mat-card-content>
-</mat-card>
+<div class="full-container">
+    <div class="wrap">
+        <mat-card class="fl-center-contents">
+            <mat-card-title><h1>Login</h1></mat-card-title>
+            <mat-card-content>
+                <form class="login-form"
+                    (ngSubmit)="login(input.value)">
+                    <mat-form-field class="login-field">
+                        <input matInput #input [formControl]="izFormControl"
+                            [errorStateMatcher]="matcher"
+                            maxlength="6"
+                            class="big-field">
+                        <mat-hint>Enter your 6 digit code</mat-hint>
+                        <mat-hint align="end">{{input.value?.length || 0}}/6</mat-hint>
+                        <mat-error *ngIf="izFormControl.hasError('badIZ') && !izFormControl.hasError('required')">
+                          Please enter a valid IZ number
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

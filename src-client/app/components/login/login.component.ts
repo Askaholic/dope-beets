@@ -14,7 +14,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export function izValidator(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {
-        const goodiz = /^\d{6}$/.test(control.value);
+        const goodiz = /^\d{0,6}$/.test(control.value);
         return goodiz ? null: {'badIZ': {value: control.value}};
       };
 }
