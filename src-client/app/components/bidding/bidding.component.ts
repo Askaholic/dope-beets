@@ -18,6 +18,7 @@ import 'rxjs/add/operator/switchMap';
 export class BiddingComponent implements OnInit {
 
     userData$: Observable<any>;
+    userData: any;
     vegData$: Observable<any>;
 
     constructor(
@@ -39,11 +40,8 @@ export class BiddingComponent implements OnInit {
         });
         this.vegData$ = this.api.getVegetables();
 
-        this.vegData$.subscribe((data) => {
-            console.log(data);
-        })
         this.userData$.subscribe((data)=> {
-          console.log(data);
+            this.userData = data;
         },
         (error) => {
             console.log('Error: ', error);
@@ -53,5 +51,14 @@ export class BiddingComponent implements OnInit {
 
     submitBid(vegName: string, amount: string) {
         console.log(vegName, amount);
+        this.api.makeBid(this.userData.user.iz, vegName, amount).subscribe(
+            (data) => {
+                this.userData$ = Observable.of(data);
+            },
+            (error) => {
+                console.log(error);
+                this.router.navigate(['verboten']);
+            }
+        )
     }
 }

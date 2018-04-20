@@ -10,6 +10,9 @@
             <mat-card class="expand-vert">
                 <mat-card-title>
                     <span>My Bids</span>
+                    <div *ngFor="let bid of (userData$ | async)?.user.bids">
+                        {{bid}}
+                    </div>
                 </mat-card-title>
                 <mat-card-content>
                 </mat-card-content>
@@ -21,7 +24,7 @@
                     <span>Available Vegetables</span>
                 </mat-card-title>
                 <mat-card-content>
-                    <div  *ngFor="let veg of (vegData$ | async)?.vegetables">
+                    <div *ngFor="let veg of (vegData$ | async)?.vegetables">
                         <app-vegetable [veg]="veg">
                         </app-vegetable>
                         <form (ngSubmit)="submitBid(veg.name, input.value)">
