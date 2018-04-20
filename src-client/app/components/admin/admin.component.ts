@@ -15,7 +15,7 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-    private password: string;
+    public password: string;
 
     userData$: Observable<any>;
     vegData$: Observable<any>;
