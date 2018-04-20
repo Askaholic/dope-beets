@@ -42,9 +42,23 @@ export class AdminComponent implements OnInit {
         this.userData$.subscribe(
             (data) => {
                 this.vegData$ = this.api.getVegetables();
+                var sorted = {};
 
-                sortedData$ = Observable.of({});
-                
+                data.users.map((user) => {
+                    user.bids.map((bid) => {
+                        if (!sorted[bid.item]) {
+                            sorted[bid.item] = [];
+                        }
+
+                        sorted[bid.item].push({iz: user.iz, amount: bid.amount});
+                    });
+                });
+                for (let key of Object.keys(sorted)) {
+                    sorted[key].sort((a, b) => {
+                        return b.amount - a.amount;
+                    });
+                }
+                this.sortedData$ = Observable.of(sorted);
             },
             (error) => {
                 this.router.navigate(['verboten']);

@@ -31,6 +31,12 @@
                             </app-vegetable>
                         </mat-card-title>
                         <mat-card-content>
+                            <div *ngFor="let bid of (sortedData$ | async)?.beet; let idx = index">
+                                <br/>
+                                <mat-divider *ngIf="idx !== 0"></mat-divider>
+                                <mat-icon svgIcon="account"></mat-icon>
+                                :{{bid.iz}} <span class="spacer"></span> {{bid.amount}}
+                            </div>
                         </mat-card-content>
                     </mat-card>
                 </div>
