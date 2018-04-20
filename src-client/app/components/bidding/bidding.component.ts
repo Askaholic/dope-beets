@@ -28,10 +28,9 @@ export class BiddingComponent implements OnInit {
         private iconRegistry: MatIconRegistry,
         private sanitizer: DomSanitizer
     ) {
-
-    iconRegistry.addSvgIcon(
-        'account',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/img/account.svg'));
+        iconRegistry.addSvgIcon(
+            'account',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/account.svg'));
     }
 
     ngOnInit() {

@@ -9,7 +9,7 @@
         <div class="grid-item2 expand-vert">
             <mat-card class="expand-vert">
                 <mat-card-title>
-                    <span>My Bids</span>
+                    <span>My Bid</span>
                 </mat-card-title>
                 <mat-card-content>
                     <div  *ngFor="let bid of (userData$ | async)?.user.bids; let idx = index">
@@ -22,7 +22,7 @@
         <div class="grid-item1 expand-vert">
             <mat-card class="expand-vert">
                 <mat-card-title>
-                    <span>Available Vegetables</span>
+                    <span>Available Vegetable</span>
                 </mat-card-title>
                 <mat-card-content>
                     <div *ngFor="let veg of (vegData$ | async)?.vegetables; let idx = index">

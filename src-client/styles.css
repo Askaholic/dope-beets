@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
 .expand {
     width: 100%;
     height: 100%;

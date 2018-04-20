@@ -19,5 +19,12 @@
 .password-wrap {
     display: block;
     width: 30rem;
+}
 
+.page-wrap {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
 }

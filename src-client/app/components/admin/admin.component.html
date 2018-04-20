@@ -12,4 +12,29 @@
             </mat-card-content>
         </mat-card>
     </div>
+    <div class="page-wrap" *ngIf="password !== undefined">
+        <mat-toolbar color="primary">
+            <mat-icon svgIcon="account"></mat-icon>
+            <span>: Prime Minister</span>
+            <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+        <mat-card class="expand-vert">
+            <mat-card-title>
+                <span>Available Vegetable</span>
+            </mat-card-title>
+            <mat-card-content>
+                <div *ngFor="let veg of (vegData$ | async)?.vegetables; let idx = index">
+                    <br/>
+                    <mat-card>
+                        <mat-card-title>
+                            <app-vegetable [veg]="veg">
+                            </app-vegetable>
+                        </mat-card-title>
+                        <mat-card-content>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

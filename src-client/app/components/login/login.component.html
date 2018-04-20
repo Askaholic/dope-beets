@@ -13,7 +13,7 @@
                         <mat-hint>Enter your 6 digit code</mat-hint>
                         <mat-hint align="end">{{input.value?.length || 0}}/6</mat-hint>
                         <mat-error *ngIf="izFormControl.hasError('badIZ') && !izFormControl.hasError('required')">
-                          Please enter a valid IZ number
+                          Please enter valid IZ number
                         </mat-error>
                     </mat-form-field>
                 </form>

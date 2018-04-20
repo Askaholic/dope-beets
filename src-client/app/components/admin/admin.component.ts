@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,12 +14,23 @@ import { Observable } from 'rxjs';
 })
 export class AdminComponent implements OnInit {
     private password: string;
+
     userData$: Observable<any>;
+    vegData$: Observable<any>;
+
+    sortedData$: Observable<any>;
+
 
     constructor(
         private api: ApiService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private iconRegistry: MatIconRegistry,
+        private sanitizer: DomSanitizer
+    ) {
+        iconRegistry.addSvgIcon(
+            'account',
+            sanitizer.bypassSecurityTrustResourceUrl('assets/img/account.svg'));
+    }
 
     ngOnInit() {
     }
@@ -26,7 +40,12 @@ export class AdminComponent implements OnInit {
         this.userData$ = this.api.getUsers(password);
 
         this.userData$.subscribe(
-            (data) => {},
+            (data) => {
+                this.vegData$ = this.api.getVegetables();
+
+                sortedData$ = Observable.of({});
+                
+            },
             (error) => {
                 this.router.navigate(['verboten']);
             }
