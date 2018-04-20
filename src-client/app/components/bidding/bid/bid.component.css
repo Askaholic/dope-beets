@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+    grid-template-areas: 'a a a a a a a a a a a b c';
+    align-items: center;
+}
+
+.grid-item1 {
+    grid-area: a;
+}
+
+.grid-item2 {
+    grid-area: b;
+}
+
+.grid-item3 {
+    grid-area: c;
+}
+
+.float-right {
+    float: right;
+}

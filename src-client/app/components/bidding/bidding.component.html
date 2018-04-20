@@ -10,11 +10,12 @@
             <mat-card class="expand-vert">
                 <mat-card-title>
                     <span>My Bids</span>
-                    <div *ngFor="let bid of (userData$ | async)?.user.bids">
-                        {{bid}}
-                    </div>
                 </mat-card-title>
                 <mat-card-content>
+                    <div  *ngFor="let bid of (userData$ | async)?.user.bids">
+                        <br/>
+                        <app-bid [bid]="bid"></app-bid>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -24,7 +25,9 @@
                     <span>Available Vegetables</span>
                 </mat-card-title>
                 <mat-card-content>
-                    <div *ngFor="let veg of (vegData$ | async)?.vegetables">
+                    <div *ngFor="let veg of (vegData$ | async)?.vegetables; let idx = index">
+                        <mat-divider *ngIf="idx !== 0"></mat-divider>
+                        <br/>
                         <app-vegetable [veg]="veg">
                         </app-vegetable>
                         <form (ngSubmit)="submitBid(veg.name, input.value)">

@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { BiddingComponent } from './components/bidding/bidding.component';
 import { VegetableComponent } from './components/vegetable/vegetable.component';
 import { VerbotenComponent } from './components/verboten/verboten.component';
+import { BidComponent } from './components/bidding/bid/bid.component';
 
 
 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     LoginComponent,
     BiddingComponent,
     VegetableComponent,
-    VerbotenComponent
+    VerbotenComponent,
+    BidComponent
   ],
   imports: [
     RouterModule.forRoot(
