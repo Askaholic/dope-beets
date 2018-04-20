@@ -18,6 +18,7 @@ import { BiddingComponent } from './components/bidding/bidding.component';
 import { VegetableComponent } from './components/vegetable/vegetable.component';
 import { VerbotenComponent } from './components/verboten/verboten.component';
 import { BidComponent } from './components/bidding/bid/bid.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'login',      component: LoginComponent },
   { path: 'user/:iz',   component: BiddingComponent },
   { path: 'verboten',   component: VerbotenComponent },
+  { path: 'admin',   component: AdminComponent },
   { path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     BiddingComponent,
     VegetableComponent,
     VerbotenComponent,
-    BidComponent
+    BidComponent,
+    AdminComponent
   ],
   imports: [
     RouterModule.forRoot(
