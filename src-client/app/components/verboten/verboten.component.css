@@ -1,0 +1,13 @@
+.wrap {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f44336;
+}
+
+.verboten {
+    font-size: 100px;
+
+}

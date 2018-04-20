@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Add Vegetable</h2>
+<mat-dialog-content [formGroup]="form">
+    <mat-form-field>
+        <input matInput
+            placeholder="Vegetable Name"
+            formControlName="name">
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="secondary" (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="save()">Add</button>
+</mat-dialog-actions>

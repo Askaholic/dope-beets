@@ -1,0 +1,18 @@
+<div class="wrap">
+    <mat-card>
+        <mat-card-content>
+            <div class="grid-container">
+                <span class="grid-item1">{{ bid.item }}</span>
+                <span class="grid-item2">
+                    <span class="float-right">{{ bid.amount }}</span>
+                </span>
+                <span class="grid-item3">
+                    <button mat-icon-button color="warn" class="float-right"
+                        (click)="del.emit()">
+                        <span>X</span>
+                    </button>
+                </span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

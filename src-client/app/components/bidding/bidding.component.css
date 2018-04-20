@@ -1,0 +1,19 @@
+.wrap {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 'col2 col1 col1';
+}
+
+.grid-item1 {
+    grid-area: col1;
+}
+
+.grid-item2 {
+    grid-area: col2;
+}

@@ -1,0 +1,48 @@
+<div class="full-container">
+    <div class="password-wrap" *ngIf="password === undefined">
+        <mat-card>
+            <mat-card-title><h1>Password</h1></mat-card-title>
+            <mat-card-content>
+                <form class="pass-form"
+                    (ngSubmit)="getBids(input.value)">
+                    <mat-form-field class="pass-field">
+                        <input matInput #input type="password">
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="page-wrap" *ngIf="password !== undefined">
+        <mat-toolbar color="primary">
+            <mat-icon svgIcon="account"></mat-icon>
+            <span>: Prime Minister</span>
+            <span class="fill-remaining-space"></span>
+        </mat-toolbar>
+        <mat-card class="expand-vert">
+            <mat-card-title>
+                <span>Available Vegetable</span>
+                <button mat-raised-button color="accent"
+                    (click)="openAddDialog()">Add</button>
+            </mat-card-title>
+            <mat-card-content>
+                <div *ngFor="let veg of (vegData$ | async)?.vegetables; let idx = index">
+                    <br/>
+                    <mat-card>
+                        <mat-card-title>
+                            <app-vegetable [veg]="veg">
+                            </app-vegetable>
+                        </mat-card-title>
+                        <mat-card-content>
+                            <div *ngFor="let bid of get(sortedData$ | async, veg.name); let idx = index">
+                                <br/>
+                                <mat-divider *ngIf="idx !== 0"></mat-divider>
+                                <mat-icon svgIcon="account"></mat-icon>
+                                :{{bid.iz}} <span class="spacer"></span> {{bid.amount}}
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+.pass-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.pass-field {
+    width: 100%;
+}
+
+.full-container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-wrap {
+    display: block;
+    position: absolute;
+    top: 20vh;
+    width: 30rem;
+}
+
+.page-wrap {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.spacer {
+    display: inline-block;
+    width: 5rem;
+}
