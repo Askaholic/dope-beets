@@ -1,3 +1,8 @@
+
+.big-field {
+    font-size: 44px;
+}
+
 .login-form {
     min-width: 150px;
     max-width: 500px;
@@ -8,13 +13,9 @@
     width: 100%;
 }
 
-.big-field {
-    font-size: 44px;
-}
-
 .full-container {
     width: 100vw;
-    height: 100vh;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,4 +23,6 @@
 
 .wrap {
     display: block;
+    width: 30rem;
+
 }
