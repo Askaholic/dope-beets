@@ -5,9 +5,9 @@
         <span class="fill-remaining-space"></span>
         <span>Izhk: {{ (userData$ | async)?.user.izhk }}</span>
     </mat-toolbar>
-    <div class="grid-container">
-        <div class="grid-item2">
-            <mat-card>
+    <div class="grid-container expand-vert">
+        <div class="grid-item2 expand-vert">
+            <mat-card class="expand-vert">
                 <mat-card-title>
                     <span>My Bids</span>
                 </mat-card-title>
@@ -15,12 +15,22 @@
                 </mat-card-content>
             </mat-card>
         </div>
-        <div class="grid-item1">
-            <mat-card>
+        <div class="grid-item1 expand-vert">
+            <mat-card class="expand-vert">
                 <mat-card-title>
                     <span>Available Vegetables</span>
                 </mat-card-title>
                 <mat-card-content>
+                    <div  *ngFor="let veg of (vegData$ | async)?.vegetables">
+                        <app-vegetable [veg]="veg">
+                        </app-vegetable>
+                        <form (ngSubmit)="submitBid(veg.name, input.value)">
+                            <mat-form-field>
+                                <input matInput #input placeholder="amount">
+                            </mat-form-field>
+                            <button type="submit" mat-raised-button color="primary">Bid</button>
+                        </form>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>

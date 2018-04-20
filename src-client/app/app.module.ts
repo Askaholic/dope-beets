@@ -15,6 +15,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BiddingComponent } from './components/bidding/bidding.component';
+import { VegetableComponent } from './components/vegetable/vegetable.component';
 
 
 
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    BiddingComponent
+    BiddingComponent,
+    VegetableComponent
   ],
   imports: [
     RouterModule.forRoot(

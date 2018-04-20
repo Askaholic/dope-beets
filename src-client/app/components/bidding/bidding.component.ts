@@ -18,6 +18,7 @@ import 'rxjs/add/operator/switchMap';
 export class BiddingComponent implements OnInit {
 
     userData$: Observable<any>;
+    vegData$: Observable<any>;
 
     constructor(
         private api: ApiService,
@@ -34,14 +35,23 @@ export class BiddingComponent implements OnInit {
 
     ngOnInit() {
         this.userData$ = this.route.paramMap.switchMap((params: ParamMap) => {
-          return this.api.getUser(params.get('iz'));
-        })
+            return this.api.getUser(params.get('iz'));
+        });
+        this.vegData$ = this.api.getVegetables();
 
+        this.vegData$.subscribe((data) => {
+            console.log(data);
+        })
         this.userData$.subscribe((data)=> {
           console.log(data);
         },
         (error) => {
             console.log('Error: ', error);
+            this.router.navigate(['login']);
         });
+    }
+
+    submitBid(vegName: string, amount: string) {
+        console.log(vegName, amount);
     }
 }
