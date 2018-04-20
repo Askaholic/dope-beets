@@ -18,7 +18,7 @@ export class ApiService {
     }
 
     getUsers(password: string) {
-        return this.http.post(this.apiUrl + '/users', {password}, httpJsonOptions);
+        return this.http.post(this.apiUrl + '/users/all', {password}, httpJsonOptions);
     }
 
     makeBid(iz:string, name: string, amount: string) {
