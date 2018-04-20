@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -10,6 +10,7 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class BidComponent implements OnInit {
     @Input() bid;
+    @Output() del = new EventEmitter();
 
     constructor(
         private iconRegistry: MatIconRegistry,

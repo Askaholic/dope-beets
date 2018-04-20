@@ -7,7 +7,8 @@
                     <span class="float-right">{{ bid.amount }}</span>
                 </span>
                 <span class="grid-item3">
-                    <button mat-icon-button color="warn" class="float-right">
+                    <button mat-icon-button color="warn" class="float-right"
+                        (click)="del.emit()">
                         <span>X</span>
                     </button>
                 </span>
