@@ -9,7 +9,7 @@ const httpJsonOptions = {
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = 'http://localhost:8337/api';
+    apiUrl: string = '/api';
 
     constructor(private http: HttpClient) { }
 
