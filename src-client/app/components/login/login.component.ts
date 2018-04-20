@@ -43,6 +43,6 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.router.navigate(['', iz])
+        this.router.navigate(['user', iz])
     }
 }

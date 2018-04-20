@@ -16,13 +16,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BiddingComponent } from './components/bidding/bidding.component';
 import { VegetableComponent } from './components/vegetable/vegetable.component';
+import { VerbotenComponent } from './components/verboten/verboten.component';
 
 
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: ':iz',   component: BiddingComponent },
-  { path: '',
+  { path: 'login',      component: LoginComponent },
+  { path: 'user/:iz',   component: BiddingComponent },
+  { path: 'verboten',   component: VerbotenComponent },
+  { path: '**',
     redirectTo: '/login',
     pathMatch: 'full'
   },
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     BiddingComponent,
-    VegetableComponent
+    VegetableComponent,
+    VerbotenComponent
   ],
   imports: [
     RouterModule.forRoot(
