@@ -21,6 +21,8 @@
         <mat-card class="expand-vert">
             <mat-card-title>
                 <span>Available Vegetable</span>
+                <button mat-raised-button color="accent"
+                    (click)="openAddDialog()">Add</button>
             </mat-card-title>
             <mat-card-content>
                 <div *ngFor="let veg of (vegData$ | async)?.vegetables; let idx = index">
@@ -31,7 +33,7 @@
                             </app-vegetable>
                         </mat-card-title>
                         <mat-card-content>
-                            <div *ngFor="let bid of (sortedData$ | async)?.beet; let idx = index">
+                            <div *ngFor="let bid of get(sortedData$ | async, veg.name); let idx = index">
                                 <br/>
                                 <mat-divider *ngIf="idx !== 0"></mat-divider>
                                 <mat-icon svgIcon="account"></mat-icon>

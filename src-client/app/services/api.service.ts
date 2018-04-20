@@ -32,4 +32,8 @@ export class ApiService {
     getVegetables() {
         return this.http.get(this.apiUrl + '/vegetables/all');
     }
+
+    makeVegetable(password: string, name: string) {
+        return this.http.put(this.apiUrl + '/vegetables/make', {password, name}, httpJsonOptions);
+    }
 }

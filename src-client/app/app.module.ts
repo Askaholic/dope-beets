@@ -19,6 +19,7 @@ import { VegetableComponent } from './components/vegetable/vegetable.component';
 import { VerbotenComponent } from './components/verboten/verboten.component';
 import { BidComponent } from './components/bidding/bid/bid.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AddDialogComponent } from './components/admin/add-dialog/add-dialog.component';
 
 
 
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     VegetableComponent,
     VerbotenComponent,
     BidComponent,
-    AdminComponent
+    AdminComponent,
+    AddDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
   providers: [
       ApiService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddDialogComponent]
 })
 export class AppModule { }

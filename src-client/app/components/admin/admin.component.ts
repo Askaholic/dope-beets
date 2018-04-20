@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry, MatDialog } from '@angular/material';
 
 import { Observable } from 'rxjs';
+
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
     selector: 'app-admin',
@@ -25,7 +27,8 @@ export class AdminComponent implements OnInit {
         private api: ApiService,
         private router: Router,
         private iconRegistry: MatIconRegistry,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        private dialog: MatDialog
     ) {
         iconRegistry.addSvgIcon(
             'account',
@@ -33,6 +36,11 @@ export class AdminComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    get(o, name: string) {
+        if (!o) return;
+        return o[name];
     }
 
     getBids(password: string) {
@@ -66,4 +74,28 @@ export class AdminComponent implements OnInit {
         );
     }
 
+    openAddDialog() {
+        let ref = this.dialog.open(AddDialogComponent, {
+            width: '20rem',
+            data: {
+                name: "test"
+            }
+        });
+
+        ref.afterClosed().subscribe(
+            (data) => {
+                console.log(data);
+                let newVeg = this.api.makeVegetable(this.password, data.name);
+                newVeg.subscribe(
+                    (data) => {
+                        console.log(data);
+                        this.vegData$ = Observable.combineLatest(this.vegData$, Observable.of(data));
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                )
+            }
+        )
+    }
 }
