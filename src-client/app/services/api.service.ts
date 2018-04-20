@@ -17,12 +17,12 @@ export class ApiService {
         return this.http.get(this.apiUrl + '/users/' + iz);
     }
 
-    getUsers() {
-        return this.http.get(this.apiUrl + '/users');
+    getUsers(password: string) {
+        return this.http.post(this.apiUrl + '/users', {password}, httpJsonOptions);
     }
 
     makeBid(iz:string, name: string, amount: string) {
-        return this.http.post(this.apiUrl + '/users/' + iz + '/bid', {vegetable: name, amount} ,httpJsonOptions);
+        return this.http.post(this.apiUrl + '/users/' + iz + '/bid', {vegetable: name, amount}, httpJsonOptions);
     }
 
     deleteBid(iz: string, bid: number) {

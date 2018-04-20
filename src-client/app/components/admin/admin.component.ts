@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
 
     getBids(password: string) {
         this.password = password;
-        this.userData$ = this.api.getUsers();
+        this.userData$ = this.api.getUsers(password);
 
         this.userData$.subscribe(
             (data) => {},
