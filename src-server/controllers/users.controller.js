@@ -24,6 +24,10 @@ function userResponse(res, user) {
     });
 };
 
+function strIsNum(str) {
+    return /^\d+$/.test(str);
+}
+
 function validateIz(id) {
     if (!id) {
         throw Error('Missing iz');
@@ -31,7 +35,7 @@ function validateIz(id) {
     if (id.toString().length != 6) {
         throw Error('Invalid iz: Must be 6 digits');
     }
-    if (!/^\d+$/.test(id)) {
+    if (!strIsNum(id)) {
         throw Error('Invalid iz: Must be a number');
     }
 }
@@ -100,6 +104,38 @@ exports.makeBid = async function(req, res, next) {
             amount: amt
         });
         user.izhk -= amt;
+        user = await userService.updateUser(user);
+    } catch (e) {
+        return error(res, e.message);
+    }
+    return userResponse(res, user);
+}
+
+exports.delBid = async function(req, res, next) {
+    var id = req.params.id;
+    try {
+        validateIz(id);
+    } catch (e) {
+        return error(res, e.message);
+    }
+
+    if (!req.body.bid) {
+        return error(res, 'Missing bid');
+    }
+    if (!strIsNum(req.body.bid)) {
+        return error(res, 'Bid does not exist');
+    }
+
+    var bid = req.body.bid;
+
+    var user;
+    try {
+        user = await userService.getUser(id);
+        if (user.bids.length <= bid) {
+            return error(res, 'Bid does not exist');
+        }
+        var removed = user.bids.splice(parseInt(bid, 10), 1);
+        user.izhk += removed.amt;
         user = await userService.updateUser(user);
     } catch (e) {
         return error(res, e.message);
