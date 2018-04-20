@@ -119,7 +119,7 @@ exports.delBid = async function(req, res, next) {
         return error(res, e.message);
     }
 
-    if (!req.body.bid) {
+    if (req.body.bid === undefined) {
         return error(res, 'Missing bid');
     }
     if (!strIsNum(req.body.bid)) {
@@ -135,7 +135,7 @@ exports.delBid = async function(req, res, next) {
             return error(res, 'Bid does not exist');
         }
         var removed = user.bids.splice(parseInt(bid, 10), 1);
-        user.izhk += removed.amt;
+        user.izhk += removed[0].amount;
         user = await userService.updateUser(user);
     } catch (e) {
         return error(res, e.message);

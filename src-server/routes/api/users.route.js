@@ -6,6 +6,6 @@ var userController = require('../../controllers/users.controller');
 
 router.get('/:id', userController.getUser);
 router.post('/:id/bid', userController.makeBid);
-router.delete('/:id/bid', userController.delBid);
+router.post('/:id/delbid', userController.delBid);
 
 module.exports = router;
