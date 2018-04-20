@@ -49,7 +49,6 @@ export class BiddingComponent implements OnInit {
     }
 
     submitBid(vegName: string, amount: string) {
-        console.log(vegName, amount);
         this.api.makeBid(this.userData.user.iz, vegName, amount).subscribe(
             (data) => {
                 this.userData$ = Observable.of(data);
