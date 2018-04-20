@@ -49,6 +49,7 @@ exports.makeVegetable = async function(req, res, next) {
         if (vegetable) {
             return error(res, name + ' already exists');
         }
+        return error(res, 'Something weird happened');
     } catch (e) {
         var storedVegetable = await veggieService.createVegetable({
             name

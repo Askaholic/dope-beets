@@ -13,14 +13,18 @@ function error(res, message, code=400) {
     });
 }
 
+function userFields(user) {
+    return {
+        iz: user.iz,
+        izhk: user.izhk,
+        bids: user.bids
+    };
+}
+
 function userResponse(res, user) {
     return res.status(200).json({
         status: 'success',
-        user: {
-            iz: user.iz,
-            izhk: user.izhk,
-            bids: user.bids
-        }
+        user: userFields(user)
     });
 };
 
@@ -56,6 +60,29 @@ async function getOrMakeUser(id) {
     return user;
 }
 
+exports.getUsers = async function(req, res, next) {
+    if (req.body.password === undefined) {
+        return error(res, 'Missing password');
+    }
+    var pass = req.body.password;
+
+    // TODO: refactor
+    if (pass !== 'beet') {
+        return error(res, 'Incorrect password');
+    }
+
+    try {
+        var users = await userService.getUsers();
+        var allUsers = [];
+        users.map((u) => allUsers.push(userFields(u)));
+        return res.status(200).json({
+            status: 'success',
+            users: allUsers
+        });
+    } catch (e) {
+        return error(res, e.message);
+    }
+}
 
 exports.getUser = async function(req, res, next) {
     var id = req.params.id;

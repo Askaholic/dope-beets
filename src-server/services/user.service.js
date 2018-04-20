@@ -1,5 +1,13 @@
 var User = require('../models/user.model');
 
+exports.getUsers = async function() {
+    var users = await User.find({});
+    if (!users) {
+        throw Exception('There are no users');
+    }
+    return users;
+}
+
 exports.getUser = async function(id) {
     var user = await User.findOne({iz: id});
     if (!user) {
