@@ -59,6 +59,18 @@ export class BiddingComponent implements OnInit {
                 console.log(error);
                 this.router.navigate(['verboten']);
             }
-        )
+        );
+    }
+
+    deleteBid(bid: number) {
+        this.api.deleteBid(this.userData.user.iz, bid).subscribe(
+            (data) => {
+                this.userData$ = Observable.of(data);
+            },
+            (error) => {
+                console.log(error);
+                this.router.navigate(['verboten']);
+            }
+        );
     }
 }

@@ -17,8 +17,12 @@ export class ApiService {
         return this.http.get(this.apiUrl + '/users/' + iz);
     }
 
-    makeBid(iz:string, name: string, amount: number) {
+    makeBid(iz:string, name: string, amount: string) {
         return this.http.post(this.apiUrl + '/users/' + iz + '/bid', {vegetable: name, amount} ,httpJsonOptions);
+    }
+
+    deleteBid(iz: string, bid: number) {
+        return this.http.post(this.apiUrl + '/users/' + iz + '/delbid', {bid: bid}, httpJsonOptions);
     }
 
     getVegetables() {

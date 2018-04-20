@@ -12,9 +12,9 @@
                     <span>My Bids</span>
                 </mat-card-title>
                 <mat-card-content>
-                    <div  *ngFor="let bid of (userData$ | async)?.user.bids">
+                    <div  *ngFor="let bid of (userData$ | async)?.user.bids; let idx = index">
                         <br/>
-                        <app-bid [bid]="bid"></app-bid>
+                        <app-bid [bid]="bid" (del)="deleteBid(idx)"></app-bid>
                     </div>
                 </mat-card-content>
             </mat-card>
