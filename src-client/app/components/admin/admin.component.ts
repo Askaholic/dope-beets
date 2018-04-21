@@ -15,7 +15,7 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-    private password: string;
+    public password: string;
 
     userData$: Observable<any>;
     vegData$: Observable<any>;
@@ -72,6 +72,18 @@ export class AdminComponent implements OnInit {
                 this.router.navigate(['verboten']);
             }
         );
+    }
+
+    delVegetable(name: string) {
+        let response = this.api.deleteVegetable(this.password, name);
+        response.subscribe(
+            (data) => {
+                this.vegData$ = this.api.getVegetables();
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
     }
 
     openAddDialog() {

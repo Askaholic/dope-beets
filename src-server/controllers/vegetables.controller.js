@@ -59,9 +59,25 @@ exports.makeVegetable = async function(req, res, next) {
 };
 
 exports.deleteVegetable = async function(req, res, next) {
+    if (!req.body.name) {
+        return error(res, 'Missing name');
+    }
+    if (!req.body.password) {
+        return error(res, 'Missing password');
+    }
+
+    var name = req.body.name;
+    var pass = req.body.password;
+
+    // TODO: refactor
+    if (pass !== 'beet') {
+        return error(res, 'Incorrect password');
+    }
+
     try {
-
+        var vegetable = await veggieService.delVegetable(name);
+        return res.status(200).json({status: 'success'});
     } catch (e) {
-
+        return error(res, e.message);
     }
 };

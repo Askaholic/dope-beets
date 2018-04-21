@@ -33,6 +33,10 @@ export class ApiService {
         return this.http.get(this.apiUrl + '/vegetables/all');
     }
 
+    deleteVegetable(password: string, name: string) {
+        return this.http.post(this.apiUrl + '/vegetables/delete', {password, name}, httpJsonOptions);
+    }
+
     makeVegetable(password: string, name: string) {
         return this.http.put(this.apiUrl + '/vegetables/make', {password, name}, httpJsonOptions);
     }
