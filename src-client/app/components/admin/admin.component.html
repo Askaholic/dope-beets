@@ -29,8 +29,13 @@
                     <br/>
                     <mat-card>
                         <mat-card-title>
-                            <app-vegetable [veg]="veg">
-                            </app-vegetable>
+                            <mat-toolbar color="secondary">
+                                <app-vegetable [veg]="veg">
+                                </app-vegetable>
+                                <span class="fill-remaining-space"></span>
+                                <button class="float-right" mat-raised-button
+                                    (click)="delVegetable(veg.name)">Delete</button>
+                            </mat-toolbar>
                         </mat-card-title>
                         <mat-card-content>
                             <div *ngFor="let bid of get(sortedData$ | async, veg.name); let idx = index">

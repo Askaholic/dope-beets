@@ -9,7 +9,7 @@ const httpJsonOptions = {
 
 @Injectable()
 export class ApiService {
-    apiUrl: string = '/api';
+    apiUrl: string = 'http://localhost:8337/api';
 
     constructor(private http: HttpClient) { }
 
@@ -31,6 +31,10 @@ export class ApiService {
 
     getVegetables() {
         return this.http.get(this.apiUrl + '/vegetables/all');
+    }
+
+    deleteVegetable(password: string, name: string) {
+        return this.http.post(this.apiUrl + '/vegetables/delete', {password, name}, httpJsonOptions);
     }
 
     makeVegetable(password: string, name: string) {

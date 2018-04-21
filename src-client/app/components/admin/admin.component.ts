@@ -74,6 +74,18 @@ export class AdminComponent implements OnInit {
         );
     }
 
+    delVegetable(name: string) {
+        let response = this.api.deleteVegetable(this.password, name);
+        response.subscribe(
+            (data) => {
+                this.vegData$ = this.api.getVegetables();
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
+
     openAddDialog() {
         let ref = this.dialog.open(AddDialogComponent, {
             width: '20rem',
