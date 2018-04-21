@@ -114,6 +114,10 @@ exports.makeBid = async function(req, res, next) {
     var veg = req.body.vegetable;
     var amt = req.body.amount;
 
+    if (!strIsNum(amt)) {
+        return error(res, 'Invalid amount');
+    }
+
     var user;
     try {
         user = await userService.getUser(id);
