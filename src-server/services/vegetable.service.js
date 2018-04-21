@@ -24,3 +24,8 @@ exports.createVegetable = async function(veg) {
     var savedVeg = await newVeg.save();
     return savedVeg;
 }
+
+exports.delVegetable = async function(name) {
+    var vegetable = await Vegetable.deleteOne({name});
+    return vegetable;
+}
